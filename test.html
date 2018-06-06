@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<title>订单详情</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<header class="head">
+				<span id="status">支付成功</span>
+			</header>
+			<div class="content">
+				<h1 class="title">江西绿地观光厅</h1>
+				<p class="item">订单号码:<span id="order_id"></span></p>
+				<p class="item">订单时间:<span id="tTime"></span></p>
+				<p class="item">订单状态:<span id="pay_status"></span></p>
+				<p class="item">游客姓名:<span id="uName"></span></p>
+				<p class="item">手机号码:<span id="phone"></span></p>
+				<p class="item">游玩时间:<span id="travel_date"></span></p>
+				<p class="item">同行游客:<span id="user_names"></span></p>
+				<div class="line"></div>
+			</div>
+		</div>
+		<div>
+			
+		</div>
+		<script>
+			(function() {
+				this.getOrder1();
+				this.getOrder2();
+			}());
+
+			// 获取订单详情
+			function getOrder1() {
+				var url = 'http://10.16.31.11:8080/mvcBasicShowProject/work/query?isPage=true';
+				$.ajax({
+					url: url,
+					type: 'get', // 请求的方式
+					dataType: "json",
+//					data: {
+//						"studioCaption": "",
+//						"gradeCaption": "",
+//						"directCaption": "",
+//						"page": "-1"
+//						"rows": "1",
+//						"sort": "createTime",
+//						"order": "asc"
+//					},
+					header: {
+						"Content-Type": "application/json"
+					},
+					success: function(res) { //返回接口数据  并进行处理
+						console.log(res.data);
+
+					}
+				})
+
+			}
+			
+			function getOrder2() {
+				var url = 'http://10.16.31.11:8080/mvcBasicShowProject/direct/queryALL';
+				$.ajax({
+					url: url,
+					type: 'post', // 请求的方式
+					dataType: "json",
+//					data: {
+//						"studioCaption": "",
+//						"gradeCaption": "",
+//						"directCaption": "",
+//						"page": "-1"
+//						"rows": "1",
+//						"sort": "createTime",
+//						"order": "asc"
+//					},
+					header: {
+						"Content-Type": "application/json"
+					},
+					success: function(res) { //返回接口数据  并进行处理
+						console.log(res.data);
+						
+					}
+				})
+
+			}
+		</script>
+	</body>
+
+</html>
